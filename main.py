@@ -1,5 +1,10 @@
 import math
-
+#ZADANIE 1
+def z1a(liczba: int) -> bool:
+    return liczba % 3 == 0
+def z1b(liczba: int) -> bool:
+    return int(math.sqrt(liczba)) ** 2 == liczba
+#ZADANIE 2
 def z2a(lista: list[int]) -> int:
     najmniejsza = None
     najwieksza = None
@@ -24,5 +29,34 @@ def z2c(lista: list[int]) -> list[int]:
 
 def z2d(lista: list[int]) -> int:
     for liczba in lista:
-        if lista.ilosc(liczba) > 1:
+        if lista.count(liczba) > 1:
             return liczba
+
+def z2e(lista: list[int]) -> set[int]:
+    rlist = set()
+    for liczba in lista:
+        if lista.count(liczba) > 1:
+            rlist.add(liczba)
+    return rlist
+#ZADANIE 3
+from abc import ABC, abstractmethod
+
+class Figura(ABC):
+    @abstractmethod
+    def A(self):
+        pass
+
+class Kwadrat(Figura):
+    def __init__(self, bok1):
+        self.bok1 = bok1
+
+    def oblicz_pole(self):
+        return self.bok1 ** 2
+
+class Prostokat(Kwadrat):
+    def __init__(self, bok1, bok2):
+        super().__init__(bok1)
+        self.bok2 = bok2
+
+    def oblicz_pole(self):
+        return self.bok1 * self.bok2
